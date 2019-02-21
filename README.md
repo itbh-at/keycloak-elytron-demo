@@ -9,10 +9,10 @@
 
 First download project from git
 ```
-git clone https://gitlab.devops.cloud.itbh.at/itbh/keycloak-elytron-demo.git
+git clone https://github.com/itbh-at/keycloak-elytron-demo.git
 ```
 
-Enter into project and create "servers" folder.Copy and unpack keycloack and wildfly 
+Enter into project and create "servers" folder. Copy and unpack keycloack and wildfly 
 servers here
 ```
 cd keycloak-elytron-demo
@@ -23,7 +23,7 @@ unzip keycloak-4.8.3.Final.zip && mv keycloak-4.8.3.Final.zip keycloak
 ```
 
 Change port on keycloak in standalone.xml (port offset) so it will not block 
-with wildfly. In this README we persume port 8180 (port-offset 100)
+with wildfly. In this README we assume port 8180 (port-offset 100)
 
 Run keycloak
 ```
@@ -32,7 +32,7 @@ sh servers/keycloak/bin/standalone.sh
 You should reach keycloak site at http://localhost:8180
 Please set admin password here. Then you can login in master realm.
 
-In keycloak backend do following
+In the keycloak backend do the following
 - create new realm called "keycloak-elytron-demo"
 - create role called "rest"
 - set rest role in Realm -> Default roles as default role
@@ -47,19 +47,19 @@ In keycloak backend do following
 - create user called "demo" with password "demo"
   - login as this demo user into system otherwise throw keycloak Not authorized error bei JWT token requests
 
-Client "curl" is used for curl command for requesting access token. This token will then be send in Authorized header
-to keycloak-elytron-demo app's endpoint. Application itself use client "keycloak-elytron-demo" whose type is bearer-only which
-means app will not contact keycloak server itself but only check access_token. If it contains required roles it allows respective traffic.
+Client "curl" is used for curl command for requesting access token. This token will then be send in the Authorized header
+to the keycloak-elytron-demo app's endpoint. The application itself uses the client "keycloak-elytron-demo" whose type is bearer-only which
+means the app will not contact the keycloak server itself but only checks the access_token. If it contains the required roles it allows respective traffic.
 
-Now run script switch_adapter.sh with parameters for "wildfly folder" "keycloack-wildfly-adapter path" and type of adapter which will be used "legacy" or "elytron"
+Now run the script switch_adapter.sh with parameters for "wildfly folder" "keycloack-wildfly-adapter path" and type of the adapter which will be used: "legacy" or "elytron"
 ```
-sh scripts/switch_adapter.sh servers/wildfly /Users/zami/Downloads/keycloak-wildfly-adapter-dist-4.8.3.Final.zip legacy
+sh scripts/switch_adapter.sh servers/wildfly <path to keycloak>/keycloak-wildfly-adapter-dist-4.8.3.Final.zip legacy
 ```
 
-At the and make simple request to app endpoint which is allowed only for clients which posses rest permission in access_token.
+At the end make a simple request to the app endpoint which is allowed only for clients which possess the rest permission in access_token.
 ```
 sh scripts/make_req.sh message_i_want_to_see
 ```
 
-You should see the result "message_i_want_to_see". This means you reached EJB protected by role "rest" sucessfully
+You should see the result "message_i_want_to_see". This means you reached the EJB, protected by the role "rest" sucessfully
 
