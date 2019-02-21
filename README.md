@@ -61,5 +61,5 @@ At the end make a simple request to the app endpoint which is allowed only for c
 sh scripts/make_req.sh message_i_want_to_see
 ```
 
-You should see the result "message_i_want_to_see". This means you reached the EJB, protected by the role "rest" sucessfully
+You should see the result "message_i_want_to_see". This means you reached the EJB which is only accessible for the role "rest".
 
