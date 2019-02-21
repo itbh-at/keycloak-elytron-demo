@@ -58,8 +58,8 @@ sh scripts/switch_adapter.sh servers/wildfly /Users/zami/Downloads/keycloak-wild
 
 At the and make simple request to app endpoint which is allowed only for clients which posses rest permission in access_token.
 ```
-sh scripts/make_req.sh
+sh scripts/make_req.sh message_i_want_to_see
 ```
 
-You should see the result "message_from_app"
+You should see the result "message_i_want_to_see". This means you reached EJB protected by role "rest" sucessfully
 
