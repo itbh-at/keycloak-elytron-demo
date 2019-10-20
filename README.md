@@ -1,11 +1,17 @@
-# Requirements
+# Demo for showcasing problems using the Keycloak Wildfly Adapter for Elytron
+
+This is a demo repository for providing a reproducable example for the Keycloak bug
+https://issues.jboss.org/browse/KEYCLOAK-9628. Roles aren't propagated to the EJB
+context when the Keycloak adapert is not installed with legacy mode.
+
+## Requirements
 
 - Java 8
 - Keycloak 4.8.3.Final
 - Wildfly 15.0
 - keycloak wildfly adapter 4.8.3.Final
 
-# Installation
+## Installation
 
 First download project from git
 ```
@@ -62,4 +68,3 @@ sh scripts/make_req.sh message_i_want_to_see
 ```
 
 You should see the result "message_i_want_to_see". This means you reached the EJB which is only accessible for the role "rest".
-
